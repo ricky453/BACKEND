@@ -14,7 +14,7 @@
        stage('SonarQube'){
            steps{
                sh"$MAVEN clean org.jacoco:jacoco-maven-plugin:prepare-agent install"
-               sh"MAVEN sonar:sonar -Dsonar.host.url=http://172.17.0.4:9000"
+               sh"$MAVEN sonar:sonar -Dsonar.host.url=http://172.17.0.4:9000"
                
            }
        }
