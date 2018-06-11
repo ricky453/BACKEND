@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DetalleMantenimiento.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MantenimientoWeb-ejb</a> &gt; <a href="index.source.html" class="el_package">sv.edu.uesocc.ingenieria.tpi2018.entities</a> &gt; <span class="el_source">DetalleMantenimiento.java</span></div><h1>DetalleMantenimiento.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package sv.edu.uesocc.ingenieria.tpi2018.entities;
+
+import java.io.Serializable;
+import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+/**
+ *
+ * @author ricky
+ */
+@Entity
+@Table(name = &quot;detalle_mantenimiento&quot;)
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = &quot;DetalleMantenimiento.findAll&quot;, query = &quot;SELECT d FROM DetalleMantenimiento d&quot;)
+    , @NamedQuery(name = &quot;DetalleMantenimiento.findByIdDetalleMantenimiento&quot;, query = &quot;SELECT d FROM DetalleMantenimiento d WHERE d.idDetalleMantenimiento = :idDetalleMantenimiento&quot;)
+    , @NamedQuery(name = &quot;DetalleMantenimiento.findByDetalleHarware&quot;, query = &quot;SELECT d FROM DetalleMantenimiento d WHERE d.detalleHarware = :detalleHarware&quot;)
+    , @NamedQuery(name = &quot;DetalleMantenimiento.findByDetalleSoftware&quot;, query = &quot;SELECT d FROM DetalleMantenimiento d WHERE d.detalleSoftware = :detalleSoftware&quot;)
+    , @NamedQuery(name = &quot;DetalleMantenimiento.findBySoftware&quot;, query = &quot;SELECT d FROM DetalleMantenimiento d WHERE d.software = :software&quot;)})
+public class DetalleMantenimiento implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = &quot;id_detalle_mantenimiento&quot;)
+    private Integer idDetalleMantenimiento;
+    @Size(max = 255)
+    @Column(name = &quot;detalle_harware&quot;)
+    private String detalleHarware;
+    @Size(max = 255)
+    @Column(name = &quot;detalle_software&quot;)
+    private String detalleSoftware;
+    @Size(max = 255)
+    @Column(name = &quot;software&quot;)
+    private String software;
+    @JoinColumn(name = &quot;id_orden_trabajo&quot;, referencedColumnName = &quot;id_orden_trabajo&quot;)
+    @ManyToOne
+    private OrdenTrabajo idOrdenTrabajo;
+    @OneToMany(mappedBy = &quot;idDetalleMantenimiento&quot;)
+    private Collection&lt;EstadoDetalleMantenimiento&gt; estadoDetalleMantenimientoCollection;
+
+<span class="fc" id="L64">    public DetalleMantenimiento() {</span>
+<span class="fc" id="L65">    }</span>
+
+<span class="nc" id="L67">    public DetalleMantenimiento(Integer idDetalleMantenimiento) {</span>
+<span class="nc" id="L68">        this.idDetalleMantenimiento = idDetalleMantenimiento;</span>
+<span class="nc" id="L69">    }</span>
+
+    public Integer getIdDetalleMantenimiento() {
+<span class="nc" id="L72">        return idDetalleMantenimiento;</span>
+    }
+
+    public void setIdDetalleMantenimiento(Integer idDetalleMantenimiento) {
+<span class="nc" id="L76">        this.idDetalleMantenimiento = idDetalleMantenimiento;</span>
+<span class="nc" id="L77">    }</span>
+
+    public String getDetalleHarware() {
+<span class="nc" id="L80">        return detalleHarware;</span>
+    }
+
+    public void setDetalleHarware(String detalleHarware) {
+<span class="nc" id="L84">        this.detalleHarware = detalleHarware;</span>
+<span class="nc" id="L85">    }</span>
+
+    public String getDetalleSoftware() {
+<span class="nc" id="L88">        return detalleSoftware;</span>
+    }
+
+    public void setDetalleSoftware(String detalleSoftware) {
+<span class="nc" id="L92">        this.detalleSoftware = detalleSoftware;</span>
+<span class="nc" id="L93">    }</span>
+
+    public String getSoftware() {
+<span class="nc" id="L96">        return software;</span>
+    }
+
+    public void setSoftware(String software) {
+<span class="nc" id="L100">        this.software = software;</span>
+<span class="nc" id="L101">    }</span>
+
+    public OrdenTrabajo getIdOrdenTrabajo() {
+<span class="nc" id="L104">        return idOrdenTrabajo;</span>
+    }
+
+    public void setIdOrdenTrabajo(OrdenTrabajo idOrdenTrabajo) {
+<span class="nc" id="L108">        this.idOrdenTrabajo = idOrdenTrabajo;</span>
+<span class="nc" id="L109">    }</span>
+
+    @XmlTransient
+    public Collection&lt;EstadoDetalleMantenimiento&gt; getEstadoDetalleMantenimientoCollection() {
+<span class="nc" id="L113">        return estadoDetalleMantenimientoCollection;</span>
+    }
+
+    public void setEstadoDetalleMantenimientoCollection(Collection&lt;EstadoDetalleMantenimiento&gt; estadoDetalleMantenimientoCollection) {
+<span class="nc" id="L117">        this.estadoDetalleMantenimientoCollection = estadoDetalleMantenimientoCollection;</span>
+<span class="nc" id="L118">    }</span>
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L122">        int hash = 0;</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        hash += (idDetalleMantenimiento != null ? idDetalleMantenimiento.hashCode() : 0);</span>
+<span class="nc" id="L124">        return hash;</span>
+    }
+
+    @Override
+    public boolean equals(Object object) {
+<span class="nc bnc" id="L129" title="All 2 branches missed.">        if (!(object instanceof DetalleMantenimiento)) {</span>
+<span class="nc" id="L130">            return false;</span>
+        }
+<span class="nc" id="L132">        DetalleMantenimiento other = (DetalleMantenimiento) object;</span>
+<span class="nc bnc" id="L133" title="All 8 branches missed.">        if ((this.idDetalleMantenimiento == null &amp;&amp; other.idDetalleMantenimiento != null) || (this.idDetalleMantenimiento != null &amp;&amp; !this.idDetalleMantenimiento.equals(other.idDetalleMantenimiento))) {</span>
+<span class="nc" id="L134">            return false;</span>
+        }
+<span class="nc" id="L136">        return true;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L141">        return &quot;sv.edu.uesocc.ingenieria.tpi2018.entities.DetalleMantenimiento[ idDetalleMantenimiento=&quot; + idDetalleMantenimiento + &quot; ]&quot;;</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

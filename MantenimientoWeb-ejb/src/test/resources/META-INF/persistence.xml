@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="mantenimiento" transaction-type="RESOURCE_LOCAL">
+    <jta-data-source>java:app/jndi_Mantenimiento</jta-data-source>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.Asuetos</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.Calendario</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.Cargo</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.DetalleEquipo</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.DetalleMantenimiento</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.Diagnostico</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.DiagnosticoParte</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.Equipo</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.EstadoDetalleMantenimiento</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.Marca</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.Modelo</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.OrdenTrabajo</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.OrdenTrabajoPorTrabajadores</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.Pasos</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.Procedimiento</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.Solicitud</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.TipoMantenimiento</class>
+    <class>sv.edu.uesocc.ingenieria.tpi2018.entities.Trabajadores</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:mantenimiento"/>
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+      <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+    </properties>
+  </persistence-unit>
+</persistence>

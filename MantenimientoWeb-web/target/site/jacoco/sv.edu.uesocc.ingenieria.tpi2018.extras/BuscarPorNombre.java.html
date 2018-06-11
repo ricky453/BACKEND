@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BuscarPorNombre.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MantenimientoWeb-web</a> &gt; <a href="index.source.html" class="el_package">sv.edu.uesocc.ingenieria.tpi2018.extras</a> &gt; <span class="el_source">BuscarPorNombre.java</span></div><h1>BuscarPorNombre.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package sv.edu.uesocc.ingenieria.tpi2018.extras;
+
+import java.util.List;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+import sv.edu.uesocc.ingenieria.tpi2018.sessions.AbstractFacadeInterface;
+
+/**
+ *
+ * @author ricky
+ * @param &lt;T&gt;
+ */
+public interface BuscarPorNombre&lt;T&gt;{
+    
+    AbstractFacadeInterface&lt;T&gt; getEntidad();
+    
+    @GET
+    @Path(&quot;nombre/{name}&quot;)
+    @Produces(MediaType.APPLICATION_JSON + &quot;; charset=utf-8&quot;)
+    default List&lt;T&gt; findByName(@PathParam(&quot;name&quot;) String name,
+        @QueryParam(&quot;first&quot;) @DefaultValue(&quot;0&quot;) int first,
+        @QueryParam(&quot;pagesize&quot;) @DefaultValue(&quot;50&quot;) int pagesize) {
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if (getEntidad() != null) {</span>
+<span class="pc bpc" id="L34" title="2 of 4 branches missed.">            if (pagesize &gt; 0 &amp;&amp; first &gt;= 0) {</span>
+<span class="fc" id="L35">                List&lt;T&gt; salida = getEntidad().findByName(name, first, pagesize);</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">                if (salida != null) {</span>
+<span class="fc" id="L37">                    return salida;</span>
+                }
+            }
+        }
+<span class="nc" id="L41">        throw new NullPointerException(&quot;NULO&quot;);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>
