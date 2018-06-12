@@ -20,7 +20,7 @@
        }
         stage('Build'){
            steps{
-               sh'$MAVEN clean install'
+               sh'$MAVEN -B -DskipTests clean install'
            }
            
        }
