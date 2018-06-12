@@ -9,7 +9,7 @@ import sv.edu.uesocc.ingenieria.tpi2018.entities.Equipo;
 import sv.edu.uesocc.ingenieria.tpi2018.entities.OrdenTrabajo;
 import sv.edu.uesocc.ingenieria.tpi2018.entities.TipoMantenimiento;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-06-09T20:06:12")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-06-11T19:21:23")
 @StaticMetamodel(Solicitud.class)
 public class Solicitud_ { 
 

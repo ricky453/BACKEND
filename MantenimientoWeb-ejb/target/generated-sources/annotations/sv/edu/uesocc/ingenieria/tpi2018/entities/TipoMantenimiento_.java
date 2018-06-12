@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import sv.edu.uesocc.ingenieria.tpi2018.entities.Solicitud;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-06-09T20:06:12")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-06-11T19:21:23")
 @StaticMetamodel(TipoMantenimiento.class)
 public class TipoMantenimiento_ { 
 

@@ -1,6 +1,0 @@
-projectKey=sv.edu.uesocc.ingenieria.tpi2018:MantenimientoWeb
-serverUrl=http://localhost:9000
-serverVersion=7.1.0.11001
-dashboardUrl=http://localhost:9000/dashboard/index/sv.edu.uesocc.ingenieria.tpi2018:MantenimientoWeb
-ceTaskId=AWPncp5Q3Jemlbp254BL
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AWPncp5Q3Jemlbp254BL
