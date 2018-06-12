@@ -1,5 +1,5 @@
-  pipeline:
-   node('docker-slave'){
+Pipeline{
+    agent any
    stages{
        stage('GetRepo'){
            steps{
