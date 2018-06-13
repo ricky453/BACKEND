@@ -6,6 +6,11 @@ pipeline {
                 git url: 'https://github.com/ricky453/BACKEND.git'
             }
         }
+        stage('Unit Testing') {
+            steps{
+                sh'mvn test'
+            }
+        }
         stage('Build && SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonarmantenimiento') {
