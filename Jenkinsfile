@@ -1,30 +1,34 @@
-pipeline{
- agent any
-   stages{
-       stage('GetRepo'){
-           steps{
-               git'https://github.com/ricky453/BACKEND.git'
-           }
-       }
-       stage('Unity TEST'){
-           steps{
-               sh'$MAVEN test'
-           }
-       }
-       stage('SonarQube'){
-           steps{
-               sh"$MAVEN clean org.jacoco:jacoco-maven-plugin:prepare-agent install"
-               sh"$MAVEN sonar:sonar -Dsonar.host.url=http://172.17.0.4:9000"
-               
-           }
-       }
+pipeline {
+    agent any
+    stages {
+        stage('Get github repo') {
+            steps {
+                git url: 'https://github.com/ricky453/BACKEND.git'
+            }
+        }
+        stage('Build && SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('sonarqubetpi') {
+                    // requires SonarQube Scanner for Maven 3.2+
+                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar -Dsonar.host.url=http://172.17.0.4:9000'
+                }
+            }
+        }
+        stage("Quality Gate") {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+                    // true = set pipeline to UNSTABLE, false = don't
+                    // Requires SonarQube Scanner for Jenkins 2.7+
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
         stage('Build'){
-           steps{
+            steps{
                sh'$MAVEN -B -DskipTests clean install'
-           }
-           
-       }
-   
-   }
+            }
+        }    
+    }
 }
  
