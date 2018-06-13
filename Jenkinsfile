@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build && SonarQube analysis') {
             steps {
-                withSonarQubeEnv('sonarqubetpi') {
+                withSonarQubeEnv('sonarmantenimiento') {
                     // requires SonarQube Scanner for Maven 3.2+
                     sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar -Dsonar.host.url=http://172.17.0.4:9000'
                 }
