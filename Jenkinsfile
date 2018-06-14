@@ -47,9 +47,9 @@ pipeline {
                     }
                     echo "Build in server"
                     withDockerServer([uri:"tcp://172.17.0.1:2376"]) { s->
-                            def app = docker.build('localhost:5000/paymitpi:latest', 'MantenimientoWeb-web/Mantenimiento-DC/PayaraMicro/.')
-                        withDockerRegistry([url:'https://localhost:5000']) { r->
-                                app.push('latest')
+                            def app = docker.build('127.0.0.1:5000/paymitpi:latest', 'MantenimientoWeb-web/Mantenimiento-DC/PayaraMicro/.')
+                        withDockerRegistry([url:'https://127.0.0.1:5000']) { r->
+                                app.push("latest")
                         }
                     }
                 }
