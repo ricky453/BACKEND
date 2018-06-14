@@ -11,6 +11,17 @@
     <module>MantenimientoWeb-web</module>
     <module>MantenimientoWeb-ejb</module>
   </modules>
+  <profiles>
+        <profile>
+             <id>sonar</id>
+             <activation>
+                 <activeByDefault>true</activeByDefault>
+             </activation>
+             <properties>
+                 <sonar.host.url>http://localhost:9000</sonar.host.url>
+             </properties>
+         </profile>
+     </profiles>
      <dependencies>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
