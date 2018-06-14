@@ -15,7 +15,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarmantenimiento') {
                     // requires SonarQube Scanner for Maven 3.2+
-                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar -Dsonar.host.url=http://172.17.0.3:9000'
+                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar -Dsonar.host.url=http://172.17.0.1:9000'
                 }
             }
         }
